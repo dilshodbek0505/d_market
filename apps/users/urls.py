@@ -12,8 +12,15 @@ from apps.users.api_endpoints.Address.views import (
     AddressRUDApiView
 )
 
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 urlpatterns = [
     # user url endpoints
+    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('register/', Register.as_view()),
     path('register-otp/', RegisterOtp.as_view()),
     path('login-otp/', LoginOtp.as_view()),
