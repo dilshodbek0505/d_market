@@ -45,7 +45,8 @@ DJANGO_APPS = [
 
 CUSTOM_APPS = [
     "apps.common",
-    "apps.notification"
+    "apps.notification",
+    "apps.user",
 ]
 
 THIRD_PARTY_APPS = [
@@ -53,6 +54,7 @@ THIRD_PARTY_APPS = [
     "drf_yasg",
     "corsheaders",
     "modeltranslation",
+    "phonenumber_field"
 ]
 
 REST_FRAMEWORK = {
@@ -132,6 +134,7 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+AUTH_USER_MODEL = 'user.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
