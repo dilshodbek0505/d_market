@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from rest_framework_simplejwt.tokens import RefreshToken
+
 from phonenumber_field.modelfields import PhoneNumberField
 
 from apps.common.models import BaseModel
@@ -14,6 +16,14 @@ class User(BaseModel, AbstractUser):
 
     def __str__(self):
         return self.username
+
+    @property
+    def token(self):
+        refresh = RefreshToken.for_user(self)
+        return {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+        }
 
 
 class Address(BaseModel):
