@@ -121,15 +121,6 @@ class RegisterConfirmApi(CreateAPIView):
         return Response(data, status=201)
 
 
-class UserDetailsApi(RetrieveUpdateAPIView):
-    permission_classes = (IsAuthenticated,)
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-    def get_object(self):
-        return self.request.user
-
-
 class RefreshTokenApi(GenericAPIView):
     permission_classes = (IsAuthenticated,)
 
@@ -142,6 +133,5 @@ __all__ = [
     'RegisterConfirmApi',
     'RegisterApi',
     'UserLoginApi',
-    'RefreshTokenApi',
-    'UserDetailsApi',
+    'RefreshTokenApi'
 ]

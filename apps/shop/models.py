@@ -81,10 +81,6 @@ class Order(BaseModel):
     status = models.CharField(max_length=128, choices=STATUS, help_text=_('Order status'))
     order_type = models.CharField(max_length=128, choices=ORDER, help_text=_('Order type'))
 
-    @property
-    def total_price(self):
-        return self.items.aggregate(total=Sum('total_price'))['total']
-
     def __str__(self):
         return self.user.username
 
@@ -100,3 +96,20 @@ class OrderItem(BaseModel):
 
     def __str__(self):
         return self.product.product.name
+
+
+class Card(BaseModel):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, help_text=_('User card'), related_name='card')
+    
+    def __str__(self) -> str:
+        return self.user.username
+
+
+class CardItem(BaseModel):
+    card = models.ForeignKey(Card, on_delete=models.CASCADE, help_text=_('Card items'), related_name='card_items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, help_text=_('Card product'), related_name='card_items')
+    
+    def __str__(self) -> str:
+        return f'{self.card.user.username} | {self.product.name}'
+
+    
