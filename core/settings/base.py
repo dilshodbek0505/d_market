@@ -225,3 +225,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://ecf4-82-215-81-83.ngrok-free.app"
 ]
 CSRF_TRUSTED_ORIGINS = ["https://ecf4-82-215-81-83.ngrok-free.app"]
+
+# bot settins
+BOT_TOKEN = env.str('BOT_TOKEN', None)

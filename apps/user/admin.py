@@ -13,7 +13,7 @@ User = get_user_model()
 class UserAdmin(Admin):
     fieldsets = (
         (None, {"fields": ("username", "password")}),
-        (_("Personal info"), {"fields": ("first_name", "last_name", "phone_number")}),
+        (_("Personal info"), {"fields": ("first_name", "last_name", "phone_number", "coins", "telegram_id")}),
         (
             _("Permissions"),
             {

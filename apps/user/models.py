@@ -14,7 +14,8 @@ class User(BaseModel, AbstractUser):
     email = models.EmailField(_('email address'), unique=True, blank=True, null=True)
     phone_number = PhoneNumberField(_('phone number'), region="UZ", unique=True)
     coins = models.PositiveIntegerField(default=0, help_text=_('User coins'))
-
+    telegram_id = models.PositiveIntegerField(default=0, help_text=_('Telegram id'))
+    
     def __str__(self):
         return self.username
 
