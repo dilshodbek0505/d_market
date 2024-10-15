@@ -8,3 +8,13 @@ def register_kb() -> ReplyKeyboardMarkup:
     kb.button(text=_('Register'))
     kb.adjust(2)
     return kb.as_markup(resize_keyboard=True)
+
+def contact_kb() -> ReplyKeyboardMarkup:
+    kb = ReplyKeyboardBuilder()
+    kb.button(text=_('Telfon raqam'), request_contact=True)
+    return kb.as_markup(resize_keyboard=True)
+
+def main_kb() -> ReplyKeyboardMarkup:
+    kb = ReplyKeyboardBuilder()
+    kb.button(text=_("Manzilni aniqlash"), request_location=True)
+    return kb.as_markup(resize_keyboard=True)

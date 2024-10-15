@@ -18,3 +18,4 @@ phonenumbers==8.13.47
 pillow==10.4.0
 aiogram==3.13.1
 uvicorn==0.31.1
+geopy==2.4.1
